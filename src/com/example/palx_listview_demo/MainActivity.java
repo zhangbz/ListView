@@ -17,12 +17,14 @@ public class MainActivity extends Activity {
 	private String[] data = { "Apple", "Banana", "Orange", "Watermelon",
 			"Pear", "Grape", "Pineapple", "Strawberry", "Cherry", "Mango" };
 	private List<Fruit> fruitList = new ArrayList<Fruit>();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		initFruits();//初始化水果数据
-		FruitAdapter adapter = new FruitAdapter(MainActivity.this, R.layout.fruit_item, fruitList);
+		initFruits();// 初始化水果数据
+		FruitAdapter adapter = new FruitAdapter(MainActivity.this,
+				R.layout.fruit_item, fruitList);
 		ListView listView = (ListView) findViewById(R.id.list_view);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
@@ -31,11 +33,12 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Fruit fruit = fruitList.get(position);
-				Toast.makeText(MainActivity.this, fruit.getName(), Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, fruit.getName(),
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
-	
+
 	private void initFruits() {
 		for (int i = 0; i < data.length; i++) {
 			fruitList.add(new Fruit(data[i], R.drawable.expression));
